@@ -1,30 +1,73 @@
-import NavBar from "./assets/component/NavBar";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import NavBar from "./component/NavBar";
+import Banner from "./component/Banner";
+import StatsSection from "./component/StatsSection";
+import ProductsCartSection from "./component/ProductsCartSection";
+import StepsSection from "./component/StepsSection";
+import PricingSection from "./component/PricingSection";
+import Footer from "./component/Footer";
+import { products } from "./data/products";
 
 function App() {
+  const [activeTab, setActiveTab] = useState("products");
+  const [cartItems, setCartItems] = useState([]);
+  const [addedProductId, setAddedProductId] = useState(null);
+
+  const handleAddToCart = (product) => {
+    setCartItems((prev) => [...prev, product]);
+    setAddedProductId(product.id);
+
+    toast.success(`${product.name} added to cart`);
+
+    setTimeout(() => {
+      setAddedProductId(null);
+    }, 1200);
+  };
+
+  const handleRemoveFromCart = (indexToRemove) => {
+    const item = cartItems[indexToRemove];
+
+    setCartItems((prev) => prev.filter((_, index) => index !== indexToRemove));
+
+    toast.error(`${item.name} removed from cart`);
+  };
+
+  const handleCheckout = () => {
+    if (cartItems.length === 0) {
+      toast.info("Your cart is already empty");
+      return;
+    }
+
+    setCartItems([]);
+    toast.success("Proceed to checkout successful. Cart cleared.");
+  };
+
   return (
-    <>
-      <NavBar />
-      <h1 className="text-3xl font-bold text-red-800">Hello world!</h1>
-      <h2 className="text-4xl underline text-blue-500">Welcome to my app</h2>
-      <div className="card bg-base-100 w-96 shadow-sm">
-        <figure>
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">Card Title</h2>
-          <p>
-            A card component has a figure, a body part, and inside body there
-            are title and actions parts
-          </p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div>
-    </>
+    <div className="bg-white">
+      <NavBar cartCount={cartItems.length} />
+      <Banner />
+      <StatsSection />
+
+      <ProductsCartSection
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        products={products}
+        cartItems={cartItems}
+        onAddToCart={handleAddToCart}
+        onRemoveFromCart={handleRemoveFromCart}
+        onCheckout={handleCheckout}
+        addedProductId={addedProductId}
+      />
+
+      <StepsSection />
+      <PricingSection />
+      <Footer />
+
+      <ToastContainer position="top-right" autoClose={2000} />
+    </div>
   );
 }
 
