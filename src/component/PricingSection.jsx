@@ -68,7 +68,7 @@ const PricingSection = () => {
           {plans.map((plan) => (
             <div
               key={plan.id}
-              className={`relative rounded-2xl border p-6 shadow-sm ${
+              className={`relative flex min-h-[540px] flex-col rounded-2xl border p-6 shadow-sm ${
                 plan.featured
                   ? "border-violet-600 bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white"
                   : "border-gray-200 bg-white text-slate-900"
@@ -81,29 +81,25 @@ const PricingSection = () => {
               )}
 
               <h3 className="text-3xl font-bold">{plan.name}</h3>
-              <p
-                className={`mt-2 ${plan.featured ? "text-white/80" : "text-gray-500"}`}
-              >
+              <p className={`mt-2 ${plan.featured ? "text-white/80" : "text-gray-500"}`}>
                 {plan.subtitle}
               </p>
 
               <div className="mt-8">
                 <span className="text-5xl font-extrabold">{plan.price}</span>
                 <span
-                  className={`ml-1 text-xl ${plan.featured ? "text-white/80" : "text-gray-400"}`}
+                  className={`ml-1 text-xl ${
+                    plan.featured ? "text-white/80" : "text-gray-400"
+                  }`}
                 >
                   {plan.period}
                 </span>
               </div>
 
-              <ul className="mt-8 space-y-3">
+              <ul className="mt-8 flex-1 space-y-3">
                 {plan.features.map((feature, index) => (
                   <li key={index} className="flex items-center gap-3">
-                    <span
-                      className={
-                        plan.featured ? "text-white" : "text-green-500"
-                      }
-                    >
+                    <span className={plan.featured ? "text-white" : "text-green-500"}>
                       ✓
                     </span>
                     <span>{feature}</span>
@@ -112,7 +108,7 @@ const PricingSection = () => {
               </ul>
 
               <button
-                className={`mt-10 w-full rounded-full px-5 py-3 text-sm font-semibold shadow-md transition ${
+                className={`mt-auto w-full rounded-full px-5 py-3 text-sm font-semibold shadow-md transition ${
                   plan.featured
                     ? "bg-white text-violet-600"
                     : "bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white"
