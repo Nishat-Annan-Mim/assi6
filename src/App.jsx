@@ -1,0 +1,31 @@
+import NavBar from "./assets/component/NavBar";
+
+function App() {
+  return (
+    <>
+      <NavBar />
+      <h1 className="text-3xl font-bold text-red-800">Hello world!</h1>
+      <h2 className="text-4xl underline text-blue-500">Welcome to my app</h2>
+      <div className="card bg-base-100 w-96 shadow-sm">
+        <figure>
+          <img
+            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+            alt="Shoes"
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">Card Title</h2>
+          <p>
+            A card component has a figure, a body part, and inside body there
+            are title and actions parts
+          </p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default App;
