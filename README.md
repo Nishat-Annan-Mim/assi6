@@ -1,16 +1,36 @@
-# React + Vite
+# DigiTools Platform 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Project Name
+DigiTools Platform
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📝 Description
+DigiTools Platform is a modern and responsive web application that provides users with access to premium digital tools such as AI writing tools, design templates, automation kits, and more. Users can browse products, add them to a cart, and manage their selections seamlessly. The UI is designed based on a Figma layout and focuses on clean design, usability, and responsiveness.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚙️ Technologies Used
+- React.js
+- Tailwind CSS
+- JavaScript (ES6+)
+- React-Toastify (for notifications)
+- JSON (for product data)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+
+### 1. 🛒 Dynamic Cart System
+Users can add products to the cart, remove them, and see the total price update in real time. The cart count is also displayed in the navbar.
+
+### 2. 🔄 Product & Cart Toggle
+The main section allows users to switch between product view and cart view. By default, products are shown, and users can toggle to see their selected items.
+
+### 3. 🔔 Interactive Notifications
+Using React-Toastify, users receive instant feedback when:
+- Adding a product to cart
+- Removing a product
+- Proceeding to checkout
+
+---
